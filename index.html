@@ -1,0 +1,80 @@
+<head>
+  <style>
+    body {
+      background-color:black;
+      color:white;
+    }
+    #box {
+      background-color:red;
+      width:50px;
+      height:50px;
+      position:absolute;
+      z-index:1;
+    }
+    #floor {
+      background-color:white;
+      position:absolute;
+    }
+    .floor1 {
+      margin-top:120px;
+      width:400px;
+      background-color:white;
+    }
+    button {z-index:2;}
+  </style>
+</head>
+<body onload="Yfix();">
+  <script>
+  var positionX = 0;
+  var positionY = 50;
+  var varDegrees = 0;
+  var size = 0;
+  var hue = 0;
+    function moveX(direction) {
+      const box = document.getElementById("box");
+      positionX += direction;
+      box.style.marginLeft = positionX + "px";
+    }
+    function moveY(direction) {
+      const box = document.getElementById("box");
+      positionY += direction;
+      box.style.top = positionY + "px";
+    }
+    function spin(degrees) {
+    const box = document.getElementById("box");
+    varDegrees += degrees;
+    box.style.transform = "rotate(" + varDegrees + "deg)";
+    }
+    function Yfix() {
+    const box = document.getElementById("box");
+    box.style.top = positionY + "px";
+    }
+    function grow(growth) {
+    const box = document.getElementById("box");
+    size += growth;
+    box.style.width = size + "px";
+    box.style.height = size + "px";
+    console.log(size);
+    }
+    function color(hueshift) {
+    const box = document.getElementById("box");
+    hue += hueshift;
+    box.style.filter = "hue-rotate(" + hue + "deg)";
+    console.log(hue + "," + hueshift);
+    }
+    
+  </script>
+  incredible video game <br>
+  <button onclick="moveX(10);">move +X</button>
+  <button onclick="moveX(-10);">move -X</button>
+  <button onclick="moveY(-10);">move +Y</button>
+  <button onclick="moveY(10);">move -Y</button>
+  <button onclick="spin(10);">spin button</button>
+  <button onclick="grow(5);">grow</button>
+  <button onclick="grow(-5);">shrink</button>
+  <button onclick="color(10);">color +</button>
+  <button onclick="color(-10);">color -</button>
+  
+  <div id="box"></div>
+  <div id="floor" class="floor1"></div>
+</body>
