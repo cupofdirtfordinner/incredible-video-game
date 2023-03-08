@@ -16,10 +16,12 @@
 <head>
   <title> incredible video game </title>
   <style>
+  
     body {
       background-color:black;
       color:white;
     }
+    
     #box {
       background-color:red;
       width:50px;
@@ -27,44 +29,73 @@
       position:absolute;
       z-index:1;
     }
+    
     #floor {
       background-color:white;
       position:absolute;
     }
+    
     .floor1 {
       margin-top:120px;
       width:400px;
       background-color:white;
     }
+    
     #luigi {display:none;}
+    
     button {z-index:2;}
+    
+    #funny {display: initial;}
+    
   </style>
 </head>
 <body onload="Yfix();">
   <script>
+  var interactions = 55;
   var positionX = 0;
   var positionY = 50;
   var varDegrees = 0;
   var size = 0;
   var hue = 0;
+  
+  const interval = setInterval(function() {
+   update();
+ }, 1);
+
+		function update() {
+    document.getElementById("clicks").innerHTML = interactions;
+    
+    if (interactions == 69) {
+    document.getElementById("funny").style.display = "block";
+    } else if (interactions == 420) {
+    document.getElementById("funny").style.display = "block";
+    } else {document.getElementById("funny").style.display = "none";}
+    
+    
+    }
+
     function moveX(direction) {
       const box = document.getElementById("box");
       positionX += direction;
       box.style.marginLeft = positionX + "px";
+      interactions += 1;
     }
     function moveY(direction) {
       const box = document.getElementById("box");
       positionY += direction;
       box.style.top = positionY + "px";
+      interactions += 1;
     }
     function spin(degrees) {
     const box = document.getElementById("box");
     varDegrees += degrees;
     box.style.transform = "rotate(" + varDegrees + "deg)";
+    interactions += 1;
     }
     function Yfix() {
     const box = document.getElementById("box");
     box.style.top = positionY + "px";
+    interactions += 1;
     }
     function grow(growth) {
     const box = document.getElementById("box");
@@ -72,17 +103,20 @@
     box.style.width = size + "px";
     box.style.height = size + "px";
     console.log(size);
+    interactions += 1;
     }
     function color(hueshift) {
     const box = document.getElementById("box");
     hue += hueshift;
     box.style.filter = "hue-rotate(" + hue + "deg)";
     console.log(hue + "," + hueshift);
+    interactions += 1;
     }
     function luigi() {
     const luigi = document.getElementById("luigi");
       luigi.style.display = "block";
       moveY(92);
+      interactions += 1;
     }
   </script>
   <img id="luigi" src="https://github.com/cupofdirtfordinner/incredible-video-game/blob/main/luigi.jpg?raw=true">
@@ -97,8 +131,8 @@
   <button onclick="color(10);">color +</button>
   <button onclick="color(-10);">color -</button>
   <button>feed</button>
- <button onclick="luigi();">luigi</button>
-  
+ <span id="clicks">0</span> <span>interactions</span>
+  <marquee id="funny">FUNNY!!!</marquee>
   <div id="box"></div>
   <div id="floor" class="floor1"></div>
 </body>
