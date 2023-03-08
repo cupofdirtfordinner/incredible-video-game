@@ -51,7 +51,7 @@
 </head>
 <body onload="Yfix();">
   <script>
-  var interactions = 55;
+  var interactions = 0;
   var positionX = 0;
   var positionY = 50;
   var varDegrees = 0;
@@ -95,7 +95,6 @@
     function Yfix() {
     const box = document.getElementById("box");
     box.style.top = positionY + "px";
-    interactions += 1;
     }
     function grow(growth) {
     const box = document.getElementById("box");
@@ -131,6 +130,7 @@
   <button onclick="color(10);">color +</button>
   <button onclick="color(-10);">color -</button>
   <button>feed</button>
+	<button onclick="luigi();" >luigi</button>
  <span id="clicks">0</span> <span>interactions</span>
   <marquee id="funny">FUNNY!!!</marquee>
   <div id="box"></div>
